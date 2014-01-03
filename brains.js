@@ -100,11 +100,11 @@ function watchWords (words) {
 // stop watching for npm
 commands.stop = function (m, who, what, where, words) {
   words.shift()
-  var stopWhat = words[0]
+  var stopWhat = words[0].replace(/ing$/, '')
     , w = watchWords(words).split(" ")
 
   switch (stopWhat) {
-    case "watching":
+    case "watch":
       return stopWatching.call(this, m, who, what, where, w)
     default: return respond.call(this, who, where,
       "What should I stop doing?")
